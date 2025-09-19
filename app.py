@@ -8,10 +8,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
 
-# Registrar blueprint
+
 app.register_blueprint(pacientes_bp, url_prefix='/pacientes')
 
-# Criar tabelas dentro do contexto da aplicação
+
 with app.app_context():
     db.create_all()
     print("Banco criado com sucesso!")

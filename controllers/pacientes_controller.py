@@ -5,7 +5,7 @@ from models.paciente import Paciente
 
 pacientes_bp = Blueprint('pacientes', __name__)
 
-# Rota de login
+
 @pacientes_bp.route('/login', methods=['POST'])
 def login():
     dados = request.get_json()
@@ -15,7 +15,7 @@ def login():
     resultado = verificar_paciente(cpf, prontuario)
     return jsonify(resultado)
 
-# Rota de cadastro de paciente
+
 @pacientes_bp.route('/cadastrar', methods=['POST'])
 def cadastrar():
     dados = request.get_json()
@@ -23,7 +23,7 @@ def cadastrar():
     cpf = dados.get('cpf')
     prontuario = dados.get('prontuario')
 
-    # Verifica se já existe paciente com CPF ou prontuário
+   
     existente = Paciente.query.filter(
         (Paciente.cpf == cpf) | (Paciente.prontuario == prontuario)
     ).first()
